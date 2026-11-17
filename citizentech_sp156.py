@@ -17,7 +17,7 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 SEED = 42                  # seed fixa: resultados reproduzíveis
 MOSTRAR_GRAFICOS = True    # False = só salva os PNGs, sem abrir janelas
-PASTA = Path(__file__).resolve().parent.parent
+PASTA = Path(__file__).resolve().parent
 for p in ("figuras", "tabelas"):
     (PASTA / p).mkdir(exist_ok=True)
 pd.set_option("display.width", None)
