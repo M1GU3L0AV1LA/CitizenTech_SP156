@@ -51,9 +51,3 @@ Dados Abertos da Prefeitura de São Paulo (SP156), solicitações abertas entre 
 - Solicitações ainda abertas ficam fora do cálculo, o que tende a subestimar os tempos.
 - Um único mês de dados, sem sazonalidade.
 - A associação com a fila do órgão é um sinal de alerta, não uma relação de causa.
-
----
-
-## English summary
-
-Statistical analysis in Python of 157,891 real service requests from São Paulo's SP156 citizen-service center (July 2026), built for the CitizenTech challenge at FIAP. The goal is to find what makes a public service slower and how a citizen-facing digital assistant should use that. Main finding: the backlog of the responsible agency (share of unfinished requests) is the strongest predictor of service delay (r = 0.55, R² = 0.31, robust to clustering by agency); a logistic model classifies slow vs. non-slow services with 70.9% accuracy (50.6% baseline, AUC 0.76). Demand is concentrated: 58 of 601 services cover 80% of requests. Run `python src/citizentech_sp156.py` to reproduce everything (fixed seed).
