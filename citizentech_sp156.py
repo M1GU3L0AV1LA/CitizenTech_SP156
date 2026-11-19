@@ -1,7 +1,6 @@
 # CitizenTech - Tempo de atendimento da Central SP156 (Prefeitura de São Paulo)
 # Fonte: Dados Abertos SP156, julho/2026
-# Estrutura esperada: dados/sp156.csv (a pasta figuras/ e tabelas/ são criadas)
-
+# Estrutura esperada: dados/sp156.csv
 from pathlib import Path
 import math
 import numpy as np
@@ -22,7 +21,6 @@ for p in ("figuras", "tabelas"):
     (PASTA / p).mkdir(exist_ok=True)
 pd.set_option("display.width", None)
 pd.set_option("display.max_columns", None)
-
 
 def fim(nome, titulo=None, x=None, y=None):
     """Aplica título/eixos, adiciona a fonte, salva o PNG e mostra o gráfico."""
@@ -105,7 +103,6 @@ def teste_z(n, alfa, cauda, rotulo):
           f"| alfa = {alfa:.0%} | n = {n}")
     print(f"   Média amostral = {xbar:.3f} | Z = {z:.4f} | Z crítico = {zc:.4f} | p-valor = {p_valor:.4f}"
           f" -> {'REJEITA H0' if rejeita else 'NÃO REJEITA H0'}")
-
 
 teste_z(20, 0.06, "esquerda", "a")
 teste_z(25, 0.09, "direita", "b")
@@ -262,12 +259,10 @@ plt.plot([0, 1], [0, 1], "--", color="gray", label="Acaso")
 plt.legend()
 fim("item06_roc", "Curva ROC (dados de teste)", "Taxa de falsos positivos", "Taxa de verdadeiros positivos")
 
-
 def metricas(c):
     vn_, fp_, fn_, vp_ = confusion_matrix(d6["lento"], (prob >= c).astype(int)).ravel()
     return {"corte": c, "acuracia": (vn_ + vp_) / len(prob),
             "sensibilidade": vp_ / (vp_ + fn_), "especificidade": vn_ / (vn_ + fp_)}
-
 
 tab_corte = pd.DataFrame([metricas(c) for c in (0.3, 0.4, 0.5, 0.6)]).round(3)
 print("\nEfeito do corte de probabilidade:\n", tab_corte)
